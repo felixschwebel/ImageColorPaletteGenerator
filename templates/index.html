@@ -5,9 +5,11 @@
         <div class="row">
             <div class="col-8">
                 <div class="headline">ColorPaletteGenerator</div>
-                <button type="button" class="btn btn-secondary">Upload</button>
-                <button type="button" class="btn btn-secondary">Get Palette</button>
+                <p>Upload your own picture to generate a color palette!</p>
+                <button type="button" class="btn btn-sm btn-primary">Upload</button>
+                <button type="button" class="btn btn-sm btn-primary">Get Palette</button>
                 <img src="{{url_for('static', filename='img/steve-johnson-placeholder.jpg')}}" class="rounded mx-auto d-block img-fluid" alt="placeholder-image">
+                <p id="copyright">© designed and coded by Felix Schwebel, example-image: Steve Johnson, unsplash.com</p>
             </div>
 
             <div class="col-4">
@@ -15,11 +17,11 @@
                     {% for color_pair in colors %}
                         <div class="row color-row">
                             <div class="col-6">
-                                <img src="static/img/example_colors/{{ color_pair[0] }}" class="rounded d-block" alt="">
+                                <img src="static/img/example_colors/{{ color_pair[0] }}" class="rounded d-block img-fluid" alt="">
                                 <p>#{{ color_pair[0].split('.')[0] }}</p>
                             </div>
                             <div class="col-6">
-                                <img src="static/img/example_colors/{{ color_pair[1] }}" class="rounded d-block" alt="">
+                                <img src="static/img/example_colors/{{ color_pair[1] }}" class="rounded d-block img-fluid" alt="">
                                 <p>#{{ color_pair[1].split('.')[0] }}</p>
                             </div>
                         </div>

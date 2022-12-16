@@ -4,7 +4,10 @@ body {
 }
 
 button {
-  margin: 1em;
+  margin: 0.8em 1.5em 1em 0em;
+  background-color: #EDEDED !important;
+  color: black !important;
+  border-style: none !important;
 }
 
 
@@ -14,9 +17,14 @@ button {
 }
 
 .color-row {
-
+  margin-left: 2em;
 }
 
 .color-field {
 
+}
+
+#copyright {
+  font-size: 0.7em;
+  padding-top: 1.5em;
 }
