@@ -1,6 +1,6 @@
 body {
   font-family: 'Quicksand', sans-serif;
-  padding-top: 2em;
+  padding: 2em 2em;
 }
 
 button {
@@ -28,3 +28,8 @@ button {
   font-size: 0.7em;
   padding-top: 1.5em;
 }
+
+@media (max-width: 600px) {
+  .headline {
+    font-size: 2em;
+  }
