@@ -1,8 +1,36 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block content %}
-    <div class="headline">ColorPaletteGenerator</div>
-    <button type="button" class="btn btn-secondary">Upload</button>
-    <button type="button" class="btn btn-secondary">Get Palette</button>
-    <img src="{{url_for('static', filename='img/steve-johnson-placeholder.jpg')}}" class="rounded mx-auto d-block img-fluid" alt="placeholder-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="headline">ColorPaletteGenerator</div>
+                <button type="button" class="btn btn-secondary">Upload</button>
+                <button type="button" class="btn btn-secondary">Get Palette</button>
+                <img src="{{url_for('static', filename='img/steve-johnson-placeholder.jpg')}}" class="rounded mx-auto d-block img-fluid" alt="placeholder-image">
+            </div>
+
+            <div class="col-4">
+                <div class="container">
+                    {% for color_pair in colors %}
+                        <div class="row color-row">
+                            <div class="col-6">
+                                <img src="static/img/example_colors/{{ color_pair[0] }}" class="rounded d-block" alt="">
+                                <p>#{{ color_pair[0].split('.')[0] }}</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="static/img/example_colors/{{ color_pair[1] }}" class="rounded d-block" alt="">
+                                <p>#{{ color_pair[1].split('.')[0] }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

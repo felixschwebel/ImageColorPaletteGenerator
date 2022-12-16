@@ -1,5 +1,22 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  padding-top: 2em;
+}
+
+button {
+  margin: 1em;
+}
 
 
 .headline {
   font-family: 'Fredericka the Great', cursive;
+  font-size: 3em;
+}
+
+.color-row {
+
+}
+
+.color-field {
+
 }
