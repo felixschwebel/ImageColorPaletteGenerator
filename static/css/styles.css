@@ -3,7 +3,8 @@ body {
   padding: 2em 2em;
 }
 
-button {
+
+.button {
   margin: 0.8em 1.5em 1em 0em;
   background-color: #EDEDED !important;
   color: black !important;
