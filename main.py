@@ -5,6 +5,7 @@ import os
 
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+EXAMPLE_IMG = 'static/img/steve-johnson-placeholder.jpg'
 
 app = Flask(__name__)
 bootstrap = Bootstrap5()
@@ -31,8 +32,10 @@ def home():
             flash('No selected file!')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'])
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return render_template('index.html', colors=example_colors)
+            return render_template('index.html', colors=example_colors, img=f'{filepath}/{filename}')
+    return render_template('index.html', colors=example_colors, img=EXAMPLE_IMG)
 
 
 if __name__ == '__main__':
