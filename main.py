@@ -1,8 +1,6 @@
 from flask import Flask, render_template, flash, redirect, request
 from flask_bootstrap import Bootstrap5
 from werkzeug.utils import secure_filename
-import numpy as np
-from PIL import Image
 import os
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -21,13 +19,6 @@ example_colors = [['1878A8.png', '181848.png'], ['186090.png', '604848.png'], ['
 # check the file extensions
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# find the most common colors
-def check_colors(image):
-    np_array = np.array(Image.open(image))
-
-
 
 
 @app.route("/", methods=['GET', 'POST'])
