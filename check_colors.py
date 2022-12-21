@@ -10,15 +10,23 @@ def convert_to_hex(rbg):
 
 def check_colors(file):
     img = np.array(Image.open(file))
+    shape = img.shape
     # flatten the image
-    shape_new = img.reshape(2483*3493, 3)
+    shape_new = img.reshape(shape[0]*shape[1], shape[2])
     # use numpy histogram to sort the colors into 10 buckets
     indices = np.histogram(shape_new, bins=10)[0]
     # get rbg colors from array
     rgb_colors = [shape_new[color] for color in indices]
     # convert to hex
     hex_colors = [convert_to_hex(value) for value in rgb_colors]
-    return hex_colors
 
+    colors = []
+    start = 0
+    end = 2
+    for i in range(5):
+        colors.append(hex_colors[start:end])
+        start += 2
+        end += 2
 
-check_colors(test_file)
+    return colors
+

@@ -21,20 +21,18 @@
                     {% for color_pair in colors %}
                         <div class="row color-row">
                             <div class="col-6">
-                                <img src="static/img/example_colors/{{ color_pair[0] }}" class="rounded d-block img-fluid" alt="">
-                                <p>#{{ color_pair[0].split('.')[0] }}</p>
+                                <div class="box img-fluid rounded" style="background-color:{{ color_pair[0] }};"></div>
+                                <p>{{ color_pair[0] }}</p>
                             </div>
                             <div class="col-6">
-                                <img src="static/img/example_colors/{{ color_pair[1] }}" class="rounded d-block img-fluid" alt="">
-                                <p>#{{ color_pair[1].split('.')[0] }}</p>
+                                <div class="box img-fluid rounded" style="background-color:{{ color_pair[1] }};"></div>
+                                <p>{{ color_pair[1] }}</p>
                             </div>
                         </div>
                     {% endfor %}
 
+
                 </div>
-
-
-
             </div>
         </div>
     </div>

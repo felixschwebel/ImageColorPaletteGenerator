@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, redirect, request
 from flask_bootstrap import Bootstrap5
 from werkzeug.utils import secure_filename
+from check_colors import check_colors
 import os
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -12,8 +13,8 @@ bootstrap = Bootstrap5()
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-example_colors = [['1878A8.png', '181848.png'], ['186090.png', '604848.png'], ['607830.png', '781818.png'],
-                  ['F06018.png', 'F09030.png'], ['FF9018.png', 'FFA830.png']]
+example_colors = [['#1878A8', '#181848'], ['#186090', '#604848'], ['#607830', '#781818'],
+                  ['#F06018', '#F09030'], ['#FF9018', '#FFA830']]
 
 
 # check the file extensions
@@ -34,7 +35,8 @@ def home():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'])
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return render_template('index.html', colors=example_colors, img=f'{filepath}/{filename}')
+            file = f'{filepath}/{filename}'
+            return render_template('index.html', colors=check_colors(file), img=file)
     return render_template('index.html', colors=example_colors, img=EXAMPLE_IMG)
 
 
