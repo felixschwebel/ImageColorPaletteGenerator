@@ -1,7 +1,9 @@
 import numpy as np
 from PIL import Image
+import pandas as pd
 
 test_file = 'static/img/steve-johnson-placeholder.jpg'
+test_file2 = 'static/uploads/coffee.jpg'
 
 
 def convert_to_hex(rbg):
@@ -13,13 +15,9 @@ def check_colors(file):
     shape = img.shape
     # flatten the image
     shape_new = img.reshape(shape[0]*shape[1], shape[2])
-    # use numpy histogram to sort the colors into 10 buckets
-    indices = np.histogram(shape_new, bins=10)[0]
-    # get rbg colors from array
-    rgb_colors = [shape_new[color] for color in indices]
-    # convert to hex
-    hex_colors = [convert_to_hex(value) for value in rgb_colors]
+    hex_df = pd.DataFrame([convert_to_hex(rgb) for rgb in shape_new]).value_counts()[:10]
 
+    hex_colors = [color[0] for color in hex_df.index]
     colors = []
     start = 0
     end = 2
@@ -29,4 +27,3 @@ def check_colors(file):
         end += 2
 
     return colors
-
