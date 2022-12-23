@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image
 import pandas as pd
+import matplotlib.pyplot as plt
 
 test_file = 'static/img/steve-johnson-placeholder.jpg'
 test_file2 = 'static/uploads/coffee.jpg'
@@ -15,7 +16,12 @@ def check_colors(file):
     shape = img.shape
     # flatten the image
     shape_new = img.reshape(shape[0]*shape[1], shape[2])
-    hex_df = pd.DataFrame([convert_to_hex(rgb) for rgb in shape_new]).value_counts()[:10]
+    df = pd.DataFrame()
+    hex_series = pd.Series([convert_to_hex(rgb) for rgb in shape_new])
+    df['colors'] = hex_series
+    df.value_counts()
+    #hex_df.hist(column=hex_df, bins=10)
+    #plt.show()
 
     hex_colors = [color[0] for color in hex_df.index]
     colors = []
@@ -27,3 +33,6 @@ def check_colors(file):
         end += 2
 
     return colors
+
+
+check_colors(test_file2)
