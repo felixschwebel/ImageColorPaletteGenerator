@@ -26,16 +26,16 @@ def allowed_file(filename):
 def home():
     if request.method == 'POST':
         if 'file' not in request.files:
-            flash('No file part!')
             return redirect(request.url)
         file = request.files['file']
-        if file.filename == '':
-            flash('No selected file!')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'])
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             file = f'{filepath}/{filename}'
+            if not check_colors(file):
+                flash('Please try another image!')
+                return render_template('index.html', colors=example_colors, img=EXAMPLE_IMG)
             return render_template('index.html', colors=check_colors(file), img=file)
     return render_template('index.html', colors=example_colors, img=EXAMPLE_IMG)
 

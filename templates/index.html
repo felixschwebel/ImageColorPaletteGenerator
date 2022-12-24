@@ -6,6 +6,11 @@
             <div class="col-lg-8">
                 <div class="headline">ColorPaletteGenerator</div>
                 <p>Upload your own picture to generate a color palette!</p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <p class="flashes">{{messages[0]}}</p>
+                    {% endif %}
+                {% endwith %}
                 <form method="post" enctype="multipart/form-data">
                     <div class="file btn btn-sm btn-primary button">
                         <input type="file" name="file">
@@ -22,11 +27,11 @@
                         <div class="row color-row">
                             <div class="col-6">
                                 <div class="box img-fluid rounded" style="background-color:{{ color_pair[0] }};"></div>
-                                <p>{{ color_pair[0] }}</p>
+                                <p>{{ color_pair[0].upper() }}</p>
                             </div>
                             <div class="col-6">
                                 <div class="box img-fluid rounded" style="background-color:{{ color_pair[1] }};"></div>
-                                <p>{{ color_pair[1] }}</p>
+                                <p>{{ color_pair[1].upper() }}</p>
                             </div>
                         </div>
                     {% endfor %}

@@ -29,6 +29,11 @@ body {
 
 }
 
+.flashes {
+    font-weight: bolder;
+    color: red;
+}
+
 #copyright {
   font-size: 0.7em;
   padding-top: 1.5em;

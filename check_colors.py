@@ -18,7 +18,10 @@ def check_colors(file):
     # use numpy histogram to sort the colors into 10 buckets
     indices = np.histogram(shape_new, bins=10)[0]
     # get rbg colors from array
-    rgb_colors = [shape_new[color] for color in indices]
+    try:
+        rgb_colors = [shape_new[color] for color in indices]
+    except IndexError:
+        return False
     # convert to hex
     hex_colors = [convert_to_hex(value) for value in rgb_colors]
 
