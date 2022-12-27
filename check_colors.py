@@ -35,3 +35,4 @@ def check_colors(file):
         end += 2
 
     return colors
+
