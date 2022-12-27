@@ -1,8 +1,11 @@
+/* html tags */
 body {
   font-family: 'Quicksand', sans-serif;
   padding: 2em 2em;
 }
 
+
+/* classes */
 .box {
   width: 120px;
   aspect-ratio : 1 / 1;
@@ -15,18 +18,8 @@ body {
   border-style: none !important;
 }
 
-
-.headline {
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 3em;
-}
-
 .color-row {
   margin-left: 2em;
-}
-
-.color-field {
-
 }
 
 .flashes {
@@ -34,11 +27,20 @@ body {
     color: red;
 }
 
+.headline {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 3em;
+}
+
+
+/* id's */
 #copyright {
   font-size: 0.7em;
   padding-top: 1.5em;
 }
 
+
+/* media queries */
 @media (max-width: 600px) {
   .headline {
     font-size: 2em;

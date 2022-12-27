@@ -2,8 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-test_file = 'static/img/steve-johnson-placeholder.jpg'
-test_file2 = 'static/uploads/coffee.jpg'
+# test_file = 'static/img/steve-johnson-placeholder.jpg'
 
 
 def convert_to_hex(rbg):
@@ -11,6 +10,7 @@ def convert_to_hex(rbg):
 
 
 def check_colors(file):
+    # open image as numpy array
     img = np.array(Image.open(file))
     shape = img.shape
     # flatten the image
@@ -25,6 +25,7 @@ def check_colors(file):
     # convert to hex
     hex_colors = [convert_to_hex(value) for value in rgb_colors]
 
+    # change the list format
     colors = []
     start = 0
     end = 2
